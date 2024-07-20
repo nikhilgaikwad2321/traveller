@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname,"/public")));//to include static file
 const store = MongoStore.create({
     mongoUrl:dbUrl,
     crypto:{ 
-        secret:process.env.SECRET,
+        secret: process.env.SECRET,
     },
     touchAfter:24*3600,//session information remains stored (no changes)
 });
@@ -57,7 +57,7 @@ store.on("error",()=>{
 
 const sessionOptions={
     store,
-    secret:"mysupersecretcode",
+    secret: process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
